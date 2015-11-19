@@ -9,6 +9,13 @@ var rename = require('gulp-rename');
 var inlineCss = require('gulp-inline-css');
 var minifyHTML = require('gulp-minify-html');
 var webp = require('gulp-webp');
+var inlinesource = require('gulp-inline-source');
+
+gulp.task('inlinesource', function () {
+    return gulp.src('./build/*.html')
+        .pipe(inlinesource())
+        .pipe(gulp.dest('./'));
+});
 
 // Lint Task
 gulp.task('lint', function() {
@@ -25,9 +32,9 @@ gulp.task('lint2', function() {
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
     return gulp.src('./build/js/*.js')
-        .pipe(concat('perfmatters.js'))
-        .pipe(gulp.dest('./js'))
-        .pipe(rename('perfmatters.js'))
+        //.pipe(concat('perfmatters.js'))
+        //.pipe(gulp.dest('./js'))
+        //.pipe(rename('perfmatters.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./js'));
 });
@@ -81,4 +88,4 @@ gulp.task('shrink2', function () {
 //});
 
 // Default Task
- gulp.task('default', ['lint', 'lint2', 'scripts', 'scripts2', 'inline', 'minify', 'shrink', 'shrink2']);
+ gulp.task('default', ['inlinesource', 'scripts', 'scripts2', 'inline', 'minify', 'shrink', 'shrink2']);
