@@ -32,12 +32,16 @@ form {
 .mover {
   position: fixed;
   width: 256px;
+  /*force pizzas into their own level to prevent entire page from painting*/
   z-index: -1;
+will-change: transform;
 }
 
 .randomPizzaContainer {
   float: left;
   display: flex;
+  /*force pizzas into their own level to prevent entire page from painting*/
+  will-change: transform;
 }
 
 .randomPizzaContainer:after {
