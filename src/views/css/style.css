@@ -34,7 +34,9 @@ form {
   width: 256px;
   /*force pizzas into their own level to prevent entire page from painting*/
   z-index: -1;
-will-change: transform;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .randomPizzaContainer {
@@ -42,6 +44,8 @@ will-change: transform;
   display: flex;
   /*force pizzas into their own level to prevent entire page from painting*/
   will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .randomPizzaContainer:after {
